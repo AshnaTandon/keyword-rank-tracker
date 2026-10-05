@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Keyword Rank Tracker</title>
 
@@ -13,282 +13,176 @@
 
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f6f8fc;
-      color: #111827;
-    }
-
-    .header {
-      background: #111827;
-      color: white;
-      padding: 20px 30px;
-    }
-
-    .header-inner {
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    .logo {
-      font-size: 23px;
-      font-weight: 700;
-    }
-
-    .subtitle {
-      margin-top: 5px;
-      color: #cbd5e1;
-      font-size: 14px;
+      font-family: Arial, sans-serif;
+      background: #f5f7fb;
+      color: #172033;
     }
 
     .container {
       max-width: 1200px;
-      margin: 35px auto;
-      padding: 0 20px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    .header {
+      margin-bottom: 25px;
+    }
+
+    .header h1 {
+      margin: 0 0 8px;
+      font-size: 32px;
+    }
+
+    .header p {
+      margin: 0;
+      color: #667085;
     }
 
     .card {
       background: white;
-      border-radius: 16px;
-      padding: 25px;
-      margin-bottom: 25px;
-      box-shadow: 0 5px 25px rgba(15, 23, 42, 0.07);
+      border: 1px solid #e4e7ec;
+      border-radius: 14px;
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     }
 
-    h2 {
-      margin-top: 0;
-      margin-bottom: 8px;
-    }
-
-    .description {
-      color: #64748b;
-      margin-bottom: 25px;
-    }
-
-    label.title {
+    label {
       display: block;
       font-weight: 600;
       margin-bottom: 8px;
     }
 
-    input[type="text"],
-    textarea,
+    input,
     select {
       width: 100%;
-      padding: 13px;
-      border: 1px solid #d1d5db;
-      border-radius: 9px;
+      padding: 12px 14px;
+      border: 1px solid #d0d5dd;
+      border-radius: 8px;
       font-size: 15px;
       outline: none;
     }
 
-    input[type="text"]:focus,
-    textarea:focus,
+    input:focus,
     select:focus {
-      border-color: #2563eb;
+      border-color: #4f46e5;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .keywords {
+      margin-top: 18px;
     }
 
     textarea {
+      width: 100%;
       min-height: 180px;
       resize: vertical;
-      line-height: 1.6;
+      padding: 14px;
+      border: 1px solid #d0d5dd;
+      border-radius: 8px;
+      font-size: 15px;
+      font-family: monospace;
     }
 
-    .counter {
-      text-align: right;
-      color: #64748b;
-      font-size: 13px;
-      margin-top: -12px;
-      margin-bottom: 20px;
-    }
-
-    .locations {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-      margin-bottom: 25px;
-    }
-
-    .location {
-      position: relative;
-      border: 2px solid #e5e7eb;
-      border-radius: 12px;
-      padding: 18px;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-
-    .location:hover {
-      border-color: #93c5fd;
-      background: #f8fbff;
-    }
-
-    .location input {
-      position: absolute;
-      opacity: 0;
-    }
-
-    .location input:checked + .location-content {
-      color: #1d4ed8;
-    }
-
-    .location:has(input:checked) {
-      border-color: #2563eb;
-      background: #eff6ff;
-    }
-
-    .location-name {
-      font-size: 16px;
-      font-weight: 700;
-    }
-
-    .location-country {
-      color: #64748b;
-      font-size: 13px;
-      margin-top: 5px;
-    }
-
-    .settings {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-
-    .check-button {
-      width: 100%;
-      border: none;
-      background: #2563eb;
+    button {
+      margin-top: 18px;
+      padding: 13px 22px;
+      border: 0;
+      border-radius: 8px;
+      background: #4f46e5;
       color: white;
-      padding: 15px;
-      border-radius: 9px;
-      font-size: 16px;
-      font-weight: 700;
+      font-size: 15px;
+      font-weight: 600;
       cursor: pointer;
-      margin-top: 25px;
     }
 
-    .check-button:hover {
-      background: #1d4ed8;
+    button:hover {
+      background: #4338ca;
     }
 
-    .check-button:disabled {
-      background: #94a3b8;
+    button:disabled {
+      background: #98a2b3;
       cursor: not-allowed;
     }
 
-    .progress-box {
-      display: none;
-      margin-top: 25px;
-    }
-
-    .progress-text {
-      display: flex;
-      justify-content: space-between;
-      font-size: 14px;
-      margin-bottom: 8px;
-    }
-
-    .progress {
-      width: 100%;
-      height: 10px;
-      background: #e5e7eb;
-      border-radius: 20px;
-      overflow: hidden;
-    }
-
-    .progress-bar {
-      width: 0%;
-      height: 100%;
-      background: #2563eb;
-      transition: width 0.3s;
-    }
-
-    .results-card {
+    .status {
+      margin-top: 15px;
+      padding: 12px;
+      border-radius: 8px;
       display: none;
     }
 
-    .summary {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-      margin: 20px 0;
+    .status.info {
+      display: block;
+      background: #eef4ff;
+      color: #175cd3;
     }
 
-    .summary-box {
-      background: #f8fafc;
-      border-radius: 10px;
-      padding: 18px;
+    .status.error {
+      display: block;
+      background: #fef3f2;
+      color: #b42318;
     }
 
-    .summary-number {
-      font-size: 25px;
-      font-weight: 700;
+    .status.success {
+      display: block;
+      background: #ecfdf3;
+      color: #027a48;
     }
 
-    .summary-label {
-      color: #64748b;
-      font-size: 13px;
-      margin-top: 5px;
-    }
-
-    .table-wrapper {
+    .table-wrap {
       overflow-x: auto;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      min-width: 750px;
+      margin-top: 10px;
+    }
+
+    th,
+    td {
+      text-align: left;
+      padding: 13px;
+      border-bottom: 1px solid #eaecf0;
+      white-space: nowrap;
     }
 
     th {
-      background: #f8fafc;
-      text-align: left;
-      padding: 14px;
+      background: #f9fafb;
       font-size: 13px;
-      color: #475569;
-    }
-
-    td {
-      padding: 15px 14px;
-      border-top: 1px solid #e5e7eb;
-      font-size: 14px;
+      color: #475467;
     }
 
     .rank {
       font-weight: 700;
-      color: #2563eb;
+      color: #4f46e5;
     }
 
     .not-found {
-      color: #94a3b8;
+      color: #b42318;
+      font-weight: 600;
     }
 
-    .location-badge {
-      display: inline-block;
-      background: #eff6ff;
-      color: #1d4ed8;
-      padding: 5px 9px;
-      border-radius: 20px;
-      font-size: 12px;
+    .url {
+      max-width: 350px;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
-    .empty-message {
-      text-align: center;
-      padding: 30px;
-      color: #64748b;
-    }
-
-    @media (max-width: 800px) {
-      .locations {
+    @media (max-width: 700px) {
+      .row {
         grid-template-columns: 1fr;
       }
 
-      .settings {
-        grid-template-columns: 1fr;
-      }
-
-      .summary {
-        grid-template-columns: 1fr;
+      .container {
+        margin: 10px auto;
       }
     }
   </style>
@@ -296,604 +190,470 @@
 
 <body>
 
-  <header class="header">
-    <div class="header-inner">
-      <div class="logo">🔎 Keyword Rank Tracker</div>
-      <div class="subtitle">
-        Track Google rankings by city and country
+<div class="container">
+
+  <div class="header">
+    <h1>Keyword Rank Tracker</h1>
+    <p>Check Google organic rankings by keyword and location.</p>
+  </div>
+
+  <div class="card">
+
+    <div class="row">
+
+      <div>
+        <label for="website">
+          Website / Domain
+        </label>
+
+        <input
+          id="website"
+          type="text"
+          placeholder="example.com"
+        />
       </div>
+
+      <div>
+        <label for="location">
+          Google Location
+        </label>
+
+        <select id="location">
+
+          <option value="Toronto, Canada">
+            Toronto, Canada
+          </option>
+
+          <option value="Dubai, UAE">
+            Dubai, UAE
+          </option>
+
+          <option value="New York, USA">
+            New York, USA
+          </option>
+
+        </select>
+      </div>
+
     </div>
-  </header>
 
-  <main class="container">
+    <div class="row">
 
-    <div class="card">
+      <div>
+        <label for="device">
+          Device
+        </label>
 
-      <h2>Check Google Rankings</h2>
+        <select id="device">
+          <option value="Desktop">
+            Desktop
+          </option>
 
-      <div class="description">
-        Enter your website and keywords, then choose one location.
+          <option value="Mobile">
+            Mobile
+          </option>
+        </select>
       </div>
 
-      <label class="title">Website / Domain</label>
+      <div>
+        <label for="depth">
+          Results to check
+        </label>
 
-      <input
-        type="text"
-        id="website"
-        placeholder="example.com"
-      >
+        <select id="depth">
 
-      <br><br>
+          <option value="100">
+            Top 100
+          </option>
 
-      <label class="title">Keywords</label>
+          <option value="50">
+            Top 50
+          </option>
+
+          <option value="30">
+            Top 30
+          </option>
+
+        </select>
+      </div>
+
+    </div>
+
+    <div class="keywords">
+
+      <label for="keywords">
+        Keywords
+      </label>
 
       <textarea
         id="keywords"
-        placeholder="seo agency&#10;seo company&#10;digital marketing&#10;web design"
-        oninput="updateKeywordCount()"
+        placeholder="seo agency Toronto
+seo company Toronto
+digital marketing Toronto
+web design Toronto"
       ></textarea>
 
-      <div class="counter">
-        <span id="keywordCount">0</span> keywords
-      </div>
+    </div>
 
-      <label class="title">Ranking Location</label>
+    <button id="checkBtn">
+      Check Rankings
+    </button>
 
-      <div class="locations">
+    <div id="status" class="status"></div>
 
-        <label class="location">
-          <input
-            type="radio"
-            name="location"
-            value="Toronto, Canada"
-          >
+  </div>
 
-          <div class="location-content">
-            <div class="location-name">
-              🇨🇦 Toronto
-            </div>
+  <div class="card">
 
-            <div class="location-country">
-              Canada
-            </div>
-          </div>
-        </label>
+    <h2>Ranking Results</h2>
 
-        <label class="location">
-          <input
-            type="radio"
-            name="location"
-            value="Dubai, UAE"
-          >
+    <div class="table-wrap">
 
-          <div class="location-content">
-            <div class="location-name">
-              🇦🇪 Dubai
-            </div>
+      <table>
 
-            <div class="location-country">
-              United Arab Emirates
-            </div>
-          </div>
-        </label>
+        <thead>
 
-        <label class="location">
-          <input
-            type="radio"
-            name="location"
-            value="New York, USA"
-          >
+          <tr>
+            <th>Keyword</th>
+            <th>Location</th>
+            <th>Rank</th>
+            <th>Page</th>
+            <th>Position on Page</th>
+            <th>Ranking URL</th>
+          </tr>
 
-          <div class="location-content">
-            <div class="location-name">
-              🇺🇸 New York
-            </div>
+        </thead>
 
-            <div class="location-country">
-              United States
-            </div>
-          </div>
-        </label>
+        <tbody id="resultsBody">
 
-      </div>
+          <tr>
+            <td colspan="6">
+              No results yet.
+            </td>
+          </tr>
 
-      <div class="settings">
+        </tbody>
 
-        <div>
-          <label class="title">Device</label>
-
-          <select id="device">
-            <option value="Desktop">Desktop</option>
-            <option value="Mobile">Mobile</option>
-          </select>
-        </div>
-
-        <div>
-          <label class="title">Results to check</label>
-
-          <select id="depth">
-            <option value="10">Top 10</option>
-            <option value="20">Top 20</option>
-            <option value="50">Top 50</option>
-            <option value="100" selected>Top 100</option>
-          </select>
-        </div>
-
-      </div>
-
-      <button
-        class="check-button"
-        id="checkButton"
-        onclick="startCheck()"
-      >
-        Check Rankings
-      </button>
-
-      <div class="progress-box" id="progressBox">
-
-        <div class="progress-text">
-          <span id="progressMessage">
-            Preparing ranking check...
-          </span>
-
-          <span id="progressCount">
-            0/0
-          </span>
-        </div>
-
-        <div class="progress">
-          <div
-            class="progress-bar"
-            id="progressBar"
-          ></div>
-        </div>
-
-      </div>
+      </table>
 
     </div>
 
+  </div>
 
-    <div class="card results-card" id="resultsCard">
+</div>
 
-      <h2>Ranking Results</h2>
+<script>
 
-      <div class="description" id="resultLocation">
-      </div>
+  const checkBtn =
+    document.getElementById("checkBtn");
 
-      <div class="summary">
+  const status =
+    document.getElementById("status");
 
-        <div class="summary-box">
-          <div
-            class="summary-number"
-            id="totalKeywords"
-          >
-            0
-          </div>
-
-          <div class="summary-label">
-            Keywords
-          </div>
-        </div>
-
-        <div class="summary-box">
-          <div
-            class="summary-number"
-            id="rankingKeywords"
-          >
-            0
-          </div>
-
-          <div class="summary-label">
-            Ranking Keywords
-          </div>
-        </div>
-
-        <div class="summary-box">
-          <div
-            class="summary-number"
-            id="notRankingKeywords"
-          >
-            0
-          </div>
-
-          <div class="summary-label">
-            Not Found
-          </div>
-        </div>
-
-      </div>
-
-      <div class="table-wrapper">
-
-        <table>
-
-          <thead>
-
-            <tr>
-              <th>Keyword</th>
-              <th>Location</th>
-              <th>Position</th>
-              <th>Page</th>
-              <th>Ranking URL</th>
-            </tr>
-
-          </thead>
-
-          <tbody id="resultsBody">
-
-          </tbody>
-
-        </table>
-
-      </div>
-
-    </div>
-
-  </main>
+  const resultsBody =
+    document.getElementById("resultsBody");
 
 
-  <script>
+  function showStatus(message, type) {
 
-    function updateKeywordCount() {
+    status.textContent = message;
 
-      const text =
-        document.getElementById("keywords").value;
+    status.className =
+      "status " + type;
 
-      const keywords = text
-        .split("\n")
-        .map(k => k.trim())
-        .filter(k => k.length > 0);
+  }
 
-      document.getElementById("keywordCount").textContent =
-        keywords.length;
+
+  function escapeHtml(value) {
+
+    return String(value ?? "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+
+  }
+
+
+  async function checkKeyword(
+    website,
+    keyword,
+    location,
+    device,
+    depth
+  ) {
+
+    const response =
+      await fetch("/api/rank-check", {
+
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+
+          website,
+          keyword,
+          location,
+          device,
+          depth
+
+        })
+
+      });
+
+
+    const data =
+      await response.json();
+
+
+    if (!response.ok) {
+
+      throw new Error(
+        data.message ||
+        "Rank check failed"
+      );
+
     }
 
 
-    async function startCheck() {
+    return data;
+
+  }
+
+
+  checkBtn.addEventListener(
+    "click",
+    async function () {
 
       const website =
-        document.getElementById("website").value.trim();
-
-      const keywordText =
-        document.getElementById("keywords").value.trim();
-
-      const locationElement =
-        document.querySelector(
-          'input[name="location"]:checked'
-        );
-
-      const device =
-        document.getElementById("device").value;
-
-      const depth =
-        Number(document.getElementById("depth").value);
-
-
-      if (!website) {
-        alert("Please enter your website.");
-        return;
-      }
-
-
-      if (!keywordText) {
-        alert("Please enter at least one keyword.");
-        return;
-      }
-
-
-      if (!locationElement) {
-        alert("Please select one location.");
-        return;
-      }
-
-
-      const keywords =
-        keywordText
-          .split("\n")
-          .map(k => k.trim())
-          .filter(k => k.length > 0);
-
-
-      if (keywords.length > 100) {
-        alert(
-          "The current version supports up to 100 keywords."
-        );
-        return;
-      }
+        document
+          .getElementById("website")
+          .value
+          .trim();
 
 
       const location =
-        locationElement.value;
+        document
+          .getElementById("location")
+          .value;
 
 
-      const button =
-        document.getElementById("checkButton");
-
-      const progressBox =
-        document.getElementById("progressBox");
-
-      const progressBar =
-        document.getElementById("progressBar");
-
-      const progressMessage =
-        document.getElementById("progressMessage");
-
-      const progressCount =
-        document.getElementById("progressCount");
-
-      const resultsCard =
-        document.getElementById("resultsCard");
-
-      const resultsBody =
-        document.getElementById("resultsBody");
+      const device =
+        document
+          .getElementById("device")
+          .value;
 
 
-      button.disabled = true;
-
-      button.textContent =
-        "Checking Rankings...";
-
-
-      progressBox.style.display =
-        "block";
+      const depth =
+        Number(
+          document
+            .getElementById("depth")
+            .value
+        );
 
 
-      resultsCard.style.display =
-        "block";
+      const keywords =
+        document
+          .getElementById("keywords")
+          .value
+          .split("\n")
+          .map(k => k.trim())
+          .filter(Boolean);
 
 
-      resultsBody.innerHTML =
-        "";
+      if (!website) {
+
+        showStatus(
+          "Please enter your website/domain.",
+          "error"
+        );
+
+        return;
+
+      }
 
 
-      document.getElementById(
-        "resultLocation"
-      ).innerHTML =
-        `Location: <span class="location-badge">${location}</span> · ${device}`;
+      if (!keywords.length) {
+
+        showStatus(
+          "Please enter at least one keyword.",
+          "error"
+        );
+
+        return;
+
+      }
 
 
-      document.getElementById(
-        "totalKeywords"
-      ).textContent =
-        keywords.length;
+      if (keywords.length > 100) {
+
+        showStatus(
+          "Maximum 100 keywords allowed.",
+          "error"
+        );
+
+        return;
+
+      }
 
 
-      let rankingCount = 0;
+      checkBtn.disabled = true;
 
-      let notFoundCount = 0;
+      resultsBody.innerHTML = "";
 
-
-      for (
-        let i = 0;
-        i < keywords.length;
-        i++
-      ) {
-
-        const keyword =
-          keywords[i];
+      showStatus(
+        `Checking ${keywords.length} keyword(s) in ${location}...`,
+        "info"
+      );
 
 
-        const percentage =
-          Math.round(
-            ((i + 1) / keywords.length) * 100
-          );
+      let completed = 0;
 
 
-        progressBar.style.width =
-          percentage + "%";
-
-
-        progressCount.textContent =
-          `${i + 1}/${keywords.length}`;
-
-
-        progressMessage.textContent =
-          `Checking "${keyword}" in ${location}...`;
-
+      for (const keyword of keywords) {
 
         try {
 
-          const response =
-            await fetch("/api/rank-check", {
-
-              method: "POST",
-
-              headers: {
-                "Content-Type": "application/json"
-              },
-
-              body: JSON.stringify({
-                website,
-                keyword,
-                location,
-                device,
-                depth
-              })
-
-            });
-
-
-          const data =
-            await response.json();
-
-
-          if (
-            data.success &&
-            data.data &&
-            data.data.found
-          ) {
-
-            rankingCount++;
-
-            addResultRow(
+          const result =
+            await checkKeyword(
+              website,
               keyword,
               location,
-              data.data.position,
-              data.data.page,
-              data.data.ranking_url
+              device,
+              depth
             );
+
+
+          completed++;
+
+
+          const row =
+            document.createElement("tr");
+
+
+          if (result.found) {
+
+            row.innerHTML = `
+
+              <td>
+                ${escapeHtml(result.keyword)}
+              </td>
+
+              <td>
+                ${escapeHtml(result.location)}
+              </td>
+
+              <td class="rank">
+                #${escapeHtml(result.position)}
+              </td>
+
+              <td>
+                ${escapeHtml(result.page)}
+              </td>
+
+              <td>
+                #${escapeHtml(
+                  result.position_on_page
+                )}
+              </td>
+
+              <td class="url">
+                ${escapeHtml(
+                  result.ranking_url
+                )}
+              </td>
+
+            `;
 
           } else {
 
-            notFoundCount++;
+            row.innerHTML = `
 
-            addResultRow(
-              keyword,
-              location,
-              null,
-              null,
-              null
-            );
+              <td>
+                ${escapeHtml(result.keyword)}
+              </td>
+
+              <td>
+                ${escapeHtml(result.location)}
+              </td>
+
+              <td class="not-found">
+                Not in Top ${depth}
+              </td>
+
+              <td>-</td>
+
+              <td>-</td>
+
+              <td>-</td>
+
+            `;
 
           }
 
+
+          resultsBody.appendChild(row);
+
+
+          showStatus(
+            `Checked ${completed} of ${keywords.length} keywords...`,
+            "info"
+          );
+
+
         } catch (error) {
 
-          notFoundCount++;
-
-          addResultRow(
-            keyword,
-            location,
-            null,
-            null,
-            null
-          );
-
-        }
+          const row =
+            document.createElement("tr");
 
 
-        document.getElementById(
-          "rankingKeywords"
-        ).textContent =
-          rankingCount;
+          row.innerHTML = `
+
+            <td>
+              ${escapeHtml(keyword)}
+            </td>
+
+            <td>
+              ${escapeHtml(location)}
+            </td>
+
+            <td class="not-found">
+              Error
+            </td>
+
+            <td colspan="3">
+              ${escapeHtml(
+                error.message
+              )}
+            </td>
+
+          `;
 
 
-        document.getElementById(
-          "notRankingKeywords"
-        ).textContent =
-          notFoundCount;
-
-
-        /*
-          Small delay between requests.
-          This is only for the MVP UI/backend test.
-        */
-
-        if (i < keywords.length - 1) {
-
-          await new Promise(
-            resolve => setTimeout(resolve, 300)
-          );
+          resultsBody.appendChild(row);
 
         }
 
       }
 
 
-      progressBar.style.width =
-        "100%";
+      checkBtn.disabled = false;
 
 
-      progressMessage.textContent =
-        "Ranking check completed";
-
-
-      button.disabled =
-        false;
-
-
-      button.textContent =
-        "Check Rankings";
+      showStatus(
+        `Finished checking ${completed} of ${keywords.length} keywords.`,
+        "success"
+      );
 
     }
 
+  );
 
-    function addResultRow(
-      keyword,
-      location,
-      position,
-      page,
-      url
-    ) {
-
-      const tbody =
-        document.getElementById("resultsBody");
-
-
-      const row =
-        document.createElement("tr");
-
-
-      let positionHTML =
-        '<span class="not-found">—</span>';
-
-      let pageHTML =
-        '<span class="not-found">—</span>';
-
-      let urlHTML =
-        '<span class="not-found">Not found</span>';
-
-
-      if (position !== null) {
-
-        positionHTML =
-          `<span class="rank">#${position}</span>`;
-
-        pageHTML =
-          page;
-
-        urlHTML =
-          `<a href="${url}" target="_blank" rel="noopener noreferrer">
-            View URL
-          </a>`;
-
-      }
-
-
-      row.innerHTML = `
-
-        <td>
-          <strong>${escapeHTML(keyword)}</strong>
-        </td>
-
-        <td>
-          <span class="location-badge">
-            ${escapeHTML(location)}
-          </span>
-        </td>
-
-        <td>
-          ${positionHTML}
-        </td>
-
-        <td>
-          ${pageHTML}
-        </td>
-
-        <td>
-          ${urlHTML}
-        </td>
-
-      `;
-
-
-      tbody.appendChild(row);
-
-    }
-
-
-    function escapeHTML(value) {
-
-      return String(value)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
-
-    }
-
-  </script>
+</script>
 
 </body>
 </html>
