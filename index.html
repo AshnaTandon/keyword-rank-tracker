@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keyword Rank Tracker</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f7fb;
+      color: #111827;
+    }
+
+    .header {
+      background: #111827;
+      color: white;
+      padding: 22px 40px;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 14px;
+      padding: 25px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font-size: 15px;
+      margin-bottom: 18px;
+    }
+
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .locations {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+
+    .location {
+      border: 2px solid #e5e7eb;
+      padding: 15px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .location:hover {
+      border-color: #2563eb;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      border: 0;
+      border-radius: 8px;
+      background: #2563eb;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #1d4ed8;
+    }
+
+    .result {
+      margin-top: 20px;
+      padding: 15px;
+      background: #eff6ff;
+      border-radius: 8px;
+      display: none;
+    }
+
+    @media (max-width: 700px) {
+      .locations {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="header">
+    <h1>🔎 Keyword Rank Tracker</h1>
+  </div>
+
+  <div class="container">
+
+    <div class="card">
+      <h2>Check Google Rankings</h2>
+      <p>Track your website rankings by country and city.</p>
+
+      <label>Website / Domain</label>
+      <input
+        type="text"
+        id="website"
+        placeholder="example.com"
+      >
+
+      <label>Keywords</label>
+      <textarea
+        id="keywords"
+        placeholder="seo agency&#10;seo company&#10;digital marketing"
+      ></textarea>
+
+      <label>Locations</label>
+
+      <div class="locations">
+
+        <label class="location">
+          <input type="checkbox" value="Toronto, Canada">
+          🇨🇦 Toronto, Canada
+        </label>
+
+        <label class="location">
+          <input type="checkbox" value="Dubai, UAE">
+          🇦🇪 Dubai, UAE
+        </label>
+
+        <label class="location">
+          <input type="checkbox" value="New York, USA">
+          🇺🇸 New York, USA
+        </label>
+
+      </div>
+
+      <br>
+
+      <label>Device</label>
+      <select id="device">
+        <option>Desktop</option>
+        <option>Mobile</option>
+      </select>
+
+      <button onclick="startCheck()">
+        Check Rankings
+      </button>
+
+      <div class="result" id="result"></div>
+
+    </div>
+
+  </div>
+
+  <script>
+    function startCheck() {
+
+      const website = document.getElementById("website").value;
+      const keywords = document.getElementById("keywords").value;
+
+      if (!website) {
+        alert("Please enter your website.");
+        return;
+      }
+
+      if (!keywords) {
+        alert("Please enter at least one keyword.");
+        return;
+      }
+
+      document.getElementById("result").style.display = "block";
+
+      document.getElementById("result").innerHTML =
+        "✅ Your rank checking system is ready. Ranking engine will be connected next.";
+    }
+  </script>
+
+</body>
+</html>
