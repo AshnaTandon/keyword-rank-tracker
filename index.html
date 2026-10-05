@@ -140,22 +140,23 @@
 
       <div class="locations">
 
-        <label class="location">
-          <input type="checkbox" value="Toronto, Canada">
-          🇨🇦 Toronto, Canada
-        </label>
+  <label class="location">
+    <input type="radio" name="location" value="Toronto, Canada">
+    🇨🇦 Toronto, Canada
+  </label>
 
-        <label class="location">
-          <input type="checkbox" value="Dubai, UAE">
-          🇦🇪 Dubai, UAE
-        </label>
+  <label class="location">
+    <input type="radio" name="location" value="Dubai, UAE">
+    🇦🇪 Dubai, UAE
+  </label>
 
-        <label class="location">
-          <input type="checkbox" value="New York, USA">
-          🇺🇸 New York, USA
-        </label>
+  <label class="location">
+    <input type="radio" name="location" value="New York, USA">
+    🇺🇸 New York, USA
+  </label>
 
-      </div>
+</div>
+
 
       <br>
 
@@ -178,24 +179,40 @@
   <script>
     function startCheck() {
 
-      const website = document.getElementById("website").value;
-      const keywords = document.getElementById("keywords").value;
+  const website = document.getElementById("website").value.trim();
+  const keywords = document.getElementById("keywords").value.trim();
+  const location = document.querySelector(
+    'input[name="location"]:checked'
+  );
 
-      if (!website) {
-        alert("Please enter your website.");
-        return;
-      }
+  if (!website) {
+    alert("Please enter your website.");
+    return;
+  }
 
-      if (!keywords) {
-        alert("Please enter at least one keyword.");
-        return;
-      }
+  if (!keywords) {
+    alert("Please enter at least one keyword.");
+    return;
+  }
 
-      document.getElementById("result").style.display = "block";
+  if (!location) {
+    alert("Please select one location.");
+    return;
+  }
 
-      document.getElementById("result").innerHTML =
-        "✅ Your rank checking system is ready. Ranking engine will be connected next.";
-    }
+  const selectedLocation = location.value;
+
+  document.getElementById("result").style.display = "block";
+
+  document.getElementById("result").innerHTML = `
+    <strong>Ranking Check Started</strong><br><br>
+    Website: ${website}<br>
+    Location: ${selectedLocation}<br>
+    Keywords: ${keywords.split("\n").filter(k => k.trim()).length}<br><br>
+    ⏳ Ranking engine will check only ${selectedLocation}.
+  `;
+}
+
   </script>
 
 </body>
