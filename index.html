@@ -177,13 +177,14 @@
   </div>
 
   <script>
-    function startCheck() {
+    async function startCheck() {
 
   const website = document.getElementById("website").value.trim();
   const keywords = document.getElementById("keywords").value.trim();
-  const location = document.querySelector(
+  const locationElement = document.querySelector(
     'input[name="location"]:checked'
   );
+  const device = document.getElementById("device").value;
 
   if (!website) {
     alert("Please enter your website.");
@@ -195,23 +196,64 @@
     return;
   }
 
-  if (!location) {
+  if (!locationElement) {
     alert("Please select one location.");
     return;
   }
 
-  const selectedLocation = location.value;
+  const location = locationElement.value;
 
-  document.getElementById("result").style.display = "block";
+  const keywordList = keywords
+    .split("\n")
+    .map(keyword => keyword.trim())
+    .filter(keyword => keyword.length > 0);
 
-  document.getElementById("result").innerHTML = `
-    <strong>Ranking Check Started</strong><br><br>
-    Website: ${website}<br>
-    Location: ${selectedLocation}<br>
-    Keywords: ${keywords.split("\n").filter(k => k.trim()).length}<br><br>
-    ⏳ Ranking engine will check only ${selectedLocation}.
-  `;
+  const result = document.getElementById("result");
+
+  result.style.display = "block";
+  result.innerHTML = "⏳ Sending ranking request...";
+
+  try {
+
+    const response = await fetch("/api/rank-check", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        website,
+        keyword: keywordList[0],
+        location,
+        device
+      })
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message || "Something went wrong");
+    }
+
+    result.innerHTML = `
+      <strong>✅ Request received</strong><br><br>
+
+      Website: ${data.data.website}<br>
+      Keyword: ${data.data.keyword}<br>
+      Location: ${data.data.location}<br>
+      Device: ${data.data.device}<br><br>
+
+      ⏳ Real Google ranking engine will be connected next.
+    `;
+
+  } catch (error) {
+
+    result.innerHTML = `
+      ❌ Error: ${error.message}
+    `;
+
+  }
 }
+
 
   </script>
 
